@@ -53,6 +53,7 @@ namespace CRUD_with_a_NET_6_Web_API_and_Entity_Framework_Core.Controllers
             foundHero.FirstName = hero.FirstName;
             foundHero.LastName = hero.LastName;
             foundHero.Place = hero.Place;
+            foundHero.Weapon = hero.Weapon;
 
             await _context.SaveChangesAsync();
 

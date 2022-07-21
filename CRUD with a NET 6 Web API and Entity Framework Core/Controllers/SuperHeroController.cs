@@ -1,6 +1,8 @@
-﻿using CRUD_with_a_NET_6_Web_API_and_Entity_Framework_Core.Models;
+﻿using CRUD_with_a_NET_6_Web_API_and_Entity_Framework_Core.Data;
+using CRUD_with_a_NET_6_Web_API_and_Entity_Framework_Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRUD_with_a_NET_6_Web_API_and_Entity_Framework_Core.Controllers
 {

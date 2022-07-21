@@ -1,5 +1,7 @@
-global using CRUD_with_a_NET_6_Web_API_and_Entity_Framework_Core.Data;
-global using Microsoft.EntityFrameworkCore;
+
+
+using CRUD_with_a_NET_6_Web_API_and_Entity_Framework_Core.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,8 @@ builder.Services.AddSwaggerGen(setup =>
     setup.EnableAnnotations();
 });
 
+builder.Services.AddRazorPages();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,6 +31,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    using (var scope = app.Services.CreateScope())
+    {
+        var context = scope.ServiceProvider.GetService<DataContext>();
+        context?.Database.Migrate();
+    }
 }
 
 app.UseHttpsRedirection();
@@ -34,5 +43,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
+
+app.MapFallbackToPage("/Error404");
 
 app.Run();

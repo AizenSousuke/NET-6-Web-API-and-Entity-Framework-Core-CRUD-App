@@ -1,0 +1,16 @@
+﻿@page
+@using CRUD_with_a_NET_6_Web_API_and_Entity_Framework_Core.Models
+
+<section>
+    <h3>Index Page</h3>
+    <h3>View component</h3>
+    @*<vc:view component="Iterator"  />*@
+    @await Component.InvokeAsync("Iterator", new List<Role>() {
+    new Role() {Name = "Role1", Id = 1},
+    new Role() {Name = "Role2", Id = 2},
+    new Role() {Name = "Role3", Id = 3},
+    new Role() {Name = "Role4", Id = 4},
+    new Role() {Name = "Role5", Id = 5},
+    new Role() {Name = "Role6", Id = 6},
+    })
+</section>
